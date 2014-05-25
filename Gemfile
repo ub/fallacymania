@@ -39,4 +39,5 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'capybara-webkit'
 end

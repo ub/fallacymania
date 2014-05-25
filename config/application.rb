@@ -33,3 +33,7 @@ module Fallacymania2
     # config.i18n.default_locale = :de
   end
 end
+
+=begin
+TODO: follow tutorial here http://goo.gl/hpr3ua
+=end
