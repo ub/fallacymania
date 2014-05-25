@@ -18,7 +18,7 @@ gem 'therubyracer', :platform=>:ruby
 gem 'thin'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'binding_of_caller'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
