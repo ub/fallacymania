@@ -120,7 +120,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Similar Projects
 ----------------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+None that we know of
 
 Contributing
 ------------
@@ -139,9 +139,9 @@ me and I’ll add a note to the README so that others can find your work.
 Credits
 -------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Yuri Baranov <baranovu at gmail>
 
 License
 -------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+MIT LICENSE

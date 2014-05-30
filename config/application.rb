@@ -35,9 +35,12 @@ module Fallacymania2
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+     config.sass.preferred_syntax = :sass
   end
 end
 
 =begin
 TODO: follow tutorial here http://goo.gl/hpr3ua
+TODO: bootstrap generators: https://github.com/doabit/bootstrap-sass-extras
 =end

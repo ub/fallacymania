@@ -15,6 +15,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
+gem 'bootstrap-sass-extras'
 gem 'thin'
 group :development do
   gem 'better_errors'
