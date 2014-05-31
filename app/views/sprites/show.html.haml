@@ -1,0 +1,7 @@
+%p#notice= notice
+= sprite(@sprite)
+
+
+= link_to 'Next', sprite_path(@sprite.id.to_i + 1)
+\|
+= link_to 'Back', sprites_path
