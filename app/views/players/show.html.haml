@@ -1,12 +1,17 @@
-%p#notice= notice
+- model_class = Player
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
 
-%p
-  %b Nickname:
-  = @player.nickname
-%p
-  %b Game:
-  = @player.game
+.fieldset
+  dl
+      dt.label.label-default= model_class.human_attribute_name(:nickname)
+      dd
+        pre.prettyprint= @player.nickname
+      dt.label.label-default= model_class.human_attribute_name(:game_id)
+      dd
+        pre.prettyprint= @player.game_id
 
-= link_to 'Edit', edit_player_path(@player)
-\|
-= link_to 'Back', players_path
+.form-group
+  = link_to t('.back', :default => t("helpers.links.back")), players_path, :class => 'btn btn-default'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_player_path(@player), :class => 'btn btn-default'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), player_path(@player), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

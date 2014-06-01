@@ -1,9 +1,7 @@
-= simple_form_for(@player) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :nickname
-    = f.association :game
-
-  .form-actions
-    = f.button :submit
+= simple_form_for @player, :html => { :class => 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+  = f.input :nickname
+  = f.input :game_id
+  .form-group
+    .col-sm-offset-3.col-sm-9
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), players_path, :class => 'btn btn-default'
