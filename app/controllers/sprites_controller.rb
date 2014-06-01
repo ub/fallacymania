@@ -7,6 +7,14 @@ class SpritesController < ApplicationController
     @sprites = Sprite.all
   end
 
+
+  # GET /sprites/random
+  # GET /sprites/random.json
+  def random
+    redirect_to action: "show", id: Sprite.random_id, status: :see_other #cache
+  end
+
+
   # GET /sprites/1
   # GET /sprites/1.json
   def show
