@@ -1,0 +1,9 @@
+= simple_form_for(@player) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nickname
+    = f.association :game
+
+  .form-actions
+    = f.button :submit
