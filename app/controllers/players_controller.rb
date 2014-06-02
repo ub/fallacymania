@@ -1,35 +1,38 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  # GET /players
-  # GET /players.json
+  # GET    /games/1/players
+  # GET    /games/1/players.json
   def index
-    @players = Player.all
+    @game = Game.find(params[:game_id])
+    @players = @game.players.all
   end
 
-  # GET /players/1
-  # GET /players/1.json
+  # GET /games/1/players/1
+  # GET /games/1/players/1.json
   def show
   end
 
-  # GET /players/new
+  # GET /games/1/players/new
   def new
-    @player = Player.new
+    @game = Game.find(params[:game_id])
+    @player = @game.players.new
   end
 
-  # GET /players/1/edit
+  # GET /games/1/players/1/edit
   def edit
   end
 
-  # POST /players
-  # POST /players.json
+  # POST /games/1/players
+  # POST /games/1/players.json
   def create
+    @game = Game.find(params[:game_id])
     @player = Player.new(player_params)
 
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
-        format.json { render :show, status: :created, location: @player }
+        format.html { redirect_to game_player_url(@game, @player), notice: 'Player was successfully created.' }
+        format.json { render :show, status: :created, location: game_player_url(@game, @player) }
       else
         format.html { render :new }
         format.json { render json: @player.errors, status: :unprocessable_entity }
@@ -37,8 +40,8 @@ class PlayersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /players/1
-  # PATCH/PUT /players/1.json
+  # PATCH/PUT /games/1/players/1
+  # PATCH/PUT /games/1/players/1.json
   def update
     respond_to do |format|
       if @player.update(player_params)
@@ -51,8 +54,8 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
-  # DELETE /players/1.json
+  # DELETE /games/1/players/1
+  # DELETE /games/1/players/1.json
   def destroy
     @player.destroy
     respond_to do |format|
@@ -64,7 +67,8 @@ class PlayersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
-      @player = Player.find(params[:id])
+      @game = Game.find(params[:game_id])
+      @player = @game.players.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

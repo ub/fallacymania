@@ -13,7 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
-gem 'simple_form'
+gem 'simple_form','~> 3.1.0.rc1'
 gem 'therubyracer', :platform=>:ruby
 gem 'bootstrap-sass-extras'
 gem 'thin'
