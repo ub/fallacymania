@@ -34,7 +34,6 @@ class Countdown
     if $(@target_id).data("stop")
       clearInterval(window.tick_id)
       @jumpToExit()
-      window.location.replace($('#stop-timer').attr("href"))
       return
     [seconds, minutes] = [@seconds, @minutes]
     if seconds > 0 or minutes > 0
