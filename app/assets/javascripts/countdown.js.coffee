@@ -26,9 +26,15 @@ class Countdown
     $(@target_id).data("stop", true)
     (new Howl( {urls:['/Beep.ogg']})).play()
 
+  jumpToExit: ->
+    window.location.replace($('#stop-timer').attr("href"))
+
+
   tick: ->
     if $(@target_id).data("stop")
       clearInterval(window.tick_id)
+      @jumpToExit()
+      window.location.replace($('#stop-timer').attr("href"))
       return
     [seconds, minutes] = [@seconds, @minutes]
     if seconds > 0 or minutes > 0
@@ -40,8 +46,10 @@ class Countdown
         @seconds = seconds - 1
     else
       clearInterval(window.tick_id)
-      (new Howl( {urls:['/Zen.mp3']})).play()
-      @sound_html5.play()
+      (new Howl( {
+        urls:['/Zen.mp3'],
+        onend: @jumpToExit
+                 })).play()
     @updateTarget()
 
   updateTarget: ->
@@ -54,4 +62,5 @@ $ ->
   $('#stop-timer').click ->
     timer.stop()
     $('#stop-timer').unbind('click')
+    return false
   timer.init()

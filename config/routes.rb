@@ -11,4 +11,7 @@ Fallacymania2::Application.routes.draw do
   resources :sprites, :only => [:index, :show] do
     get :random, on: :collection
   end
-end
+
+  get "countdown/:time" => 'countdown#show'
+  get "main" => 'main_page#show'
+ end
