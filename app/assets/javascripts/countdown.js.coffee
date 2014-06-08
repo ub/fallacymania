@@ -56,7 +56,7 @@ class Countdown
     seconds = '0' + seconds if seconds < 10
     $(@target_id).html(@minutes + ":" + seconds)
 
-$ ->
+$('.countdown.show').ready ->
   timer = new Countdown('#timer',  $('#timer').text()  )
   $('#stop-timer').click ->
     timer.stop()
