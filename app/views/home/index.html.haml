@@ -1,0 +1,15 @@
+
+.turn90
+  %h1
+    FALLACYMANiA
+    %small
+      alpha
+  .sprite{ :id => Sprite.random_id, :style => "float: none; margin: 0 auto"}
+  %p.lead
+    = link_to "Start tha game", :main, :class=>"btn btn-lg btn-primary", :id => "acknowledge"
+
+
+//= javascript_include_tag  "http://getbootstrap.com/assets/js/docs.min.js"
+%audio(src="/Zen.mp3" autoplay)
+  Your browser does not support the <code>audio</code> element.
+

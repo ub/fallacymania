@@ -28,33 +28,7 @@ group :development do
 end
 gem 'unicorn'
 gem 'capistrano'
-gem 'bootstrap-sass'
-gem 'haml-rails'
 gem 'mysql2'
 gem 'simple_form'
 gem 'unicorn'
 gem 'unicorn-rails'
-group :development do
-  gem 'capistrano', '~> 3.0.1'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', '~> 0.1.1'
-  gem 'guard-bundler'
-  gem 'guard-rails'
-  gem 'guard-rspec'
-  gem 'html2haml'
-  gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
-end
-group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-end
-group :test do
-  gem 'capybara'
-  gem 'database_cleaner', '1.0.1'
-  gem 'email_spec'
-end

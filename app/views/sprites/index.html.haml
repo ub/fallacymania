@@ -1,0 +1,22 @@
+%h1 Listing sprites
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @sprites.each do |sprite|
+    %tr
+      %td= sprite.id
+
+      %td
+        = sprite(sprite)
+        = link_to 'Show', sprite_path(sprite.id)
+
+      -#  %td= link_to 'Edit', edit_sprite_path(sprite)
+      -#  %td= link_to 'Destroy', sprite, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+-# = link_to 'New Sprite', new_sprite_path

@@ -1,0 +1,9 @@
+%p#notice= notice
+= sprite(@sprite)
+%p.lead
+  = link_to "Got this.", :main, :class=>"btn btn-lg btn-primary", :id => "acknowledge"
+
+
+-#= link_to 'Next', sprite_path(@sprite.id.to_i + 1)
+-#\|
+-#= link_to 'Back', sprites_path

@@ -1,0 +1,17 @@
+%h1 Listing main_pages
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @main_pages.each do |main_page|
+    %tr
+      %td= link_to 'Show', main_page
+      %td= link_to 'Edit', edit_main_page_path(main_page)
+      %td= link_to 'Destroy', main_page, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Main page', new_main_page_path

@@ -1,0 +1,32 @@
+$g-sprite-width:  636.5px
+$g-sprite-height: 180.4px
+.sprite
+  background-image: image_url('fallacy-sprite2x30.png')
+  background-repeat: no-repeat
+  width:  $g-sprite-width - 2
+  height: $g-sprite-height - 2
+  //max-width: 100%
+  background-size: auto
+@media all and (orientation: portrait)
+  .turn90
+    transform: rotate(90deg) translate(50px, 10%)
+    /*Firefox*/
+    -moz-transform: rotate(90deg) translate(50px, 10%)
+    /*Microsoft Internet Explorer*/
+    -ms-transform: rotate(90deg) translate(50px, 10%)
+    /*Chrome, Safari*/
+    -webkit-transform: rotate(90deg) translate(50px, 10%)
+    /*Opera*/
+    -o-transform: rotate(90deg) translate(50px, 10%)
+
+
+
+#acb
+  background-position: -636.5px 0
+
+$i:0
+@for $c from 0 through 1
+  @for $r from 0 through 29
+    #f#{$i}
+      background-position: #{$g-sprite-width * -$c} #{$g-sprite-height * -$r - 2}
+    $i: $i + 1

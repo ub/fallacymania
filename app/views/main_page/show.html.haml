@@ -1,0 +1,22 @@
+.cover-container
+  %h1.cover-heading  FALLACYMANiA
+  
+  
+
+.col-md-3.col-centered
+  .row
+    = render partial: "countdown_link", object: '0:15'
+  .row
+    = render partial: "countdown_link", object: '0:30'
+  .row
+    = render partial: "countdown_link", object: '1:00'
+  .row
+    = render partial: "countdown_link", object: '2:00'
+  .row
+    = render partial: "countdown_link", object: '3:00'
+  .row
+    %a.btn.btn-lg.btn-primary{href: "#{random_sprites_path}"} Select a random fallacy
+  .row
+    %button.btn.btn-lg.btn-default Test
+  
+
