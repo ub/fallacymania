@@ -1,4 +1,4 @@
-Fallacymania2::Application.routes.draw do
+Fallacymania::Application.routes.draw do
 
   resources :games do
     resources :players
