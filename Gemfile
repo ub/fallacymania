@@ -3,10 +3,11 @@ ruby '2.1.2'
 gem 'rails', '4.1.1'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'sass-rails',   '~> 4.0.3'
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
+
 group :assets do
-  gem 'sass-rails',   '~> 4.0.3'
-  gem 'bootstrap-sass'
-  gem 'bootstrap-sass-extras'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.3.0'
@@ -25,9 +26,8 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'capistrano-rails'
 end
-gem 'unicorn'
-gem 'capistrano'
 gem 'mysql2'
 gem 'simple_form'
 gem 'unicorn'

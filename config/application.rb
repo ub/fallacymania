@@ -80,5 +80,6 @@ module Fallacymania
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif countdown.js sprites.js)
     config.sass.preferred_syntax = :sass
 
+
   end
 end
