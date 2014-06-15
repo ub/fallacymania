@@ -4,9 +4,10 @@
     FALLACYMANiA
     %small
       alpha
-  .sprite{ :id => Sprite.random_id, :style => "float: none; margin: 0 auto"}
+  -# TODO: DRY (see sprites_helper)
+  .sprite{ :id => "f#{Sprite.random_id}", :style => "float: none; margin: 0 auto"}
   %p.lead
-    = link_to "Start tha game", :main, :class=>"btn btn-lg btn-primary", :id => "acknowledge"
+    = link_to "Start the game", :main, :class=>"btn btn-lg btn-primary", :id => "acknowledge"
 
 
 //= javascript_include_tag  "http://getbootstrap.com/assets/js/docs.min.js"
