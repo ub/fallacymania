@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'sass-rails',   '~> 4.0.3'
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
+gem 'redcarpet'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'

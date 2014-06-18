@@ -9,4 +9,9 @@ Fallacymania::Application.routes.draw do
 
   get "countdown/:time" , to: 'countdown#show', as: :countdown
   get "main" , to: 'main_page#show'
+
+  # static / almost static pages
+
+  get "about", to: 'home#about'
+
  end
