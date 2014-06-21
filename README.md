@@ -136,12 +136,41 @@ If you add functionality to this application, create an alternative
 implementation, or build an application that is similar, please contact
 me and I’ll add a note to the README so that others can find your work.
 
+
+
+Developer
+---------
+
+Yuri Baranov, baranovu AT gmail.com
+
+
 Credits
 -------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Aleksander Popov co-authored the idea and set of rules
+
+
+Acknowledgements
+----------------
+
+FALLACYMANiA is built using [Ruby on Rails](http://rubyonrails.org/) framework v 4.1
+
+It also makes use of the following open source projects:
+
+ - [Bootstrap](http://getbootstrap.com/)
+ - [jQuery](http://jquery.com/)
+ - [howler.js](http://jquery.com/)
+
+ Following media materials are used on the site and included in source repository;
+ some of them in modified form (converted in suitable format, remixed etc).
+
+ - [Rhetological fallacies]( http://www.informationisbeautiful.net/visualizations/rhetological-fallacies/
+) pictures (C) David McCandless, under CC BY-NC license
+ - [Zen Temple Bell Sound](http://soundbible.com/1477-Zen-Temple-Bell.html) by Mike Koenig under CC BY license
+ - [Tick Sound](http://soundbible.com/2044-Tick.html) by DeepFrozenApps under CC BY license
+
 
 License
 -------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+The project source is distributed under MIT License. Copyright Yuri Baranov (C) 2014
