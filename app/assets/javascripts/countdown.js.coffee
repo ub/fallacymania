@@ -1,7 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 class Countdown
+  LOUD = 1.0
+  SOFT  = 0.15
+
   constructor: (@target_id = "#timer", @start_time = "30:00") ->
 
   init: ->
@@ -11,7 +11,10 @@ class Countdown
     @sound_html5=$('audio').get(0)
     @sound_html5.play()
     #@sound = new Howl( {urls:['/Beep.ogg']})
-    @sound = new Howl( {urls:['/Tick.mp3']})
+    @sound = new Howl( {urls:['/Tick.mp3'], autoplay:false, volume: SOFT})
+    @sound.volume(SOFT)
+    # @sound.volume(1.0)
+
     window.tick = =>
       @tick()
     window.tick_id=setInterval(window.tick, 1000)
@@ -38,6 +41,11 @@ class Countdown
     [seconds, minutes] = [@seconds, @minutes]
     if seconds > 0 or minutes > 0
       @sound.play()
+      if seconds  <=  11
+        @sound.volume(LOUD)
+      else
+        @sound.volume(SOFT)
+
       if seconds is 0
         @minutes = minutes - 1
         @seconds = 59
