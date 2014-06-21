@@ -1,6 +1,6 @@
 class Countdown
   LOUD = 1.0
-  SOFT  = 0.15
+  SOFT  = 0.20
 
   constructor: (@target_id = "#timer", @start_time = "30:00") ->
 
