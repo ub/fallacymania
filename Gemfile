@@ -8,6 +8,10 @@ gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'redcarpet'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
   gem 'therubyracer', :platforms => :ruby
