@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811153352) do
+ActiveRecord::Schema.define(version: 20140813103226) do
+
+  create_table "games", force: true do |t|
+    t.string   "description"
+    t.string   "active",         limit: 10, default: "OPEN"
+    t.integer  "game_master_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["game_master_id"], name: "index_games_on_game_master_id", using: :btree
+
+  create_table "players", force: true do |t|
+    t.integer  "user_id"
+    t.string   "nick"
+    t.integer  "score"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree
+  add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

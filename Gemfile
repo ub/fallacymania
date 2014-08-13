@@ -17,6 +17,12 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.3.0'
 end
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :development do
   gem 'spring'
   gem 'better_errors'
