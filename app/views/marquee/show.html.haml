@@ -1,0 +1,20 @@
+%h1 Marquee#show
+-#%p Find me in app/views/marquee/show.html.haml
+%p Find me in app/views/marquee/show.html.haml
+%h1 Listing games
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @games.each do |game|
+    %tr
+      %td= link_to 'Show', game
+      %td= link_to 'Edit', edit_game_path(game)
+      %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Game', new_game_path

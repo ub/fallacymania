@@ -1,0 +1,29 @@
+- model_class = Game
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:active)
+      %th= model_class.human_attribute_name(:game_master_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @games.each do |game|
+      %tr
+        %td= game.id
+        %td= game.description
+        %td= game.active
+        %td= game.game_master_id
+        %td=l game.created_at, format: :long
+        %td
+          = link_to game_path(game), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
+            = glyph 'info-sign'
+          = link_to edit_game_path(game), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
+            = glyph 'pencil'
+          = link_to game_path(game), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
+            = glyph 'remove'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_game_path, :class => 'btn btn-primary'
