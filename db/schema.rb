@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140813103226) do
 
   create_table "games", force: true do |t|
     t.string   "description"
-    t.string   "active",         limit: 10, default: "OPEN"
+    t.string   "status",         limit: 10, default: "OPEN"
     t.integer  "game_master_id"
     t.datetime "created_at"
     t.datetime "updated_at"

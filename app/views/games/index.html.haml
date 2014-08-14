@@ -6,7 +6,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:description)
-      %th= model_class.human_attribute_name(:active)
+      %th= model_class.human_attribute_name(:status)
       %th= model_class.human_attribute_name(:game_master_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -15,7 +15,7 @@
       %tr
         %td= game.id
         %td= game.description
-        %td= game.active
+        %td= game.status
         %td= game.game_master_id
         %td=l game.created_at, format: :long
         %td
