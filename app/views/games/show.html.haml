@@ -12,7 +12,7 @@
       %pre.prettyprint= @game.status
     %dt.label.label-default= model_class.human_attribute_name(:game_master_id)
     %dd
-      %pre.prettyprint= @game.game_master_id
+      %pre.prettyprint= @game.game_master.name
 
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), games_path, :class => 'btn btn-default'

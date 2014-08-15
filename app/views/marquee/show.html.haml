@@ -1,7 +1,21 @@
-%h1 Marquee#show
+%h1 Marquee
 -#%p Find me in app/views/marquee/show.html.haml
-%p Find me in app/views/marquee/show.html.haml
-%h1 Listing games
+%h1 Current games
+
+.row
+  - @open_games.each do |game|
+    .col-sm-6.col-md-4
+      .thumbnail
+        .caption
+          %h4 Game
+          %p= game.description
+          %p
+            %a.btn.btn-default{href: "#"} Join
+
+-#%a.btn.btn-primary{href: "#"} Create new game
+= link_to "Create new game", new_game_path, :class => 'btn btn-primary'
+
+
 
 %table
   %tr
@@ -11,6 +25,7 @@
 
   - @games.each do |game|
     %tr
+      %td= game.description
       %td= link_to 'Show', game
       %td= link_to 'Edit', edit_game_path(game)
       %td= link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' }
