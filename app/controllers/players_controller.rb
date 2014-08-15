@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
-  before_action :set_game, only: [:new]
+  before_action :set_game
 
   # GET /players
   def index
@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      redirect_to @player, notice: 'Player was successfully created.'
+      redirect_to [@game, @player], notice: 'Player was successfully created.'
     else
       render :new
     end
@@ -43,9 +43,9 @@ class PlayersController < ApplicationController
   end
 
   # DELETE /players/1
-  def destroy
+  def destroy   #Destroy means exit game
     @player.destroy
-    redirect_to players_url, notice: 'Player was successfully destroyed.'
+    redirect_to game_players_url(@game), notice: 'Player was successfully destroyed.'
   end
 
   private
@@ -60,6 +60,6 @@ class PlayersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def player_params
-      params[:player]
+      params.require(:player).permit(:user_id, :nick)
     end
 end

@@ -3,6 +3,7 @@
 
   .form-inputs
     = f.input :nick
+    = f.hidden_field  :user_id, value: @player.user_id.to_s
 
   .form-actions
     = f.button :submit
