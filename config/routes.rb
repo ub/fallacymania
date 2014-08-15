@@ -13,7 +13,9 @@ Fallacymania::Application.routes.draw do
     get :random, on: :collection
   end
 
-  resources :games
+  resources :games do
+    resources :players
+  end
 
   get "countdown/:time" , to: 'countdown#show', as: :countdown
   get "main" , to: 'main_page#show'

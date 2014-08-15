@@ -10,8 +10,8 @@
           %h4 Game
           %p= game.description
           %p
-            %a.btn.btn-default{href: "#"} Join
-
+            %a.btn.btn-default{href: new_game_player_path(game)} Join
+-# TODO: Join game means creating a _player_ for the game
 -#%a.btn.btn-primary{href: "#"} Create new game
 = link_to "Create new game", new_game_path, :class => 'btn btn-primary'
 
