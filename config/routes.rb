@@ -14,6 +14,9 @@ Fallacymania::Application.routes.draw do
   end
 
   resources :games do
+    member do
+      get :play
+    end
     resources :players
   end
 

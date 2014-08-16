@@ -1,9 +1,14 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :play, :update, :destroy]
 
   # GET /games
   def index
     @games = Game.all
+  end
+
+  # GET /games/1/play
+  def play
+    redirect_to edit_game_path(@game)
   end
 
   # GET /games/1
