@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    @players = Player.all
+    @players = @game.players.all
   end
 
   # GET /players/1
@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
 
   # GET /players/new
   def new
-    @player = @game.players.build
+    @player = @game.players.new
     @player.user = current_user
     @player.nick = current_user.name #TODO make sure the nick is unique
   end
@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
 
   # POST /players
   def create
-    @player = Player.new(player_params)
+    @player = @game.players.new(player_params)
 
     if @player.save
       redirect_to [@game, @player], notice: 'Player was successfully created.'
