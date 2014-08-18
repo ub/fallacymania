@@ -29,7 +29,17 @@ class PlayersController < ApplicationController
     @player = @game.players.new(player_params)
 
     if @player.save
-      redirect_to [@game, @player], notice: 'Player was successfully created.'
+      player_short_json=@player.slice(:nick, :created_at).to_json
+      redis = Redis.new
+      logger.info "URL type:" + game_stream_url(@game).class.to_s
+      channel_name = "-#{game_stream_url(@game)}-"
+      logger.info "Channel name:" + channel_name + ", player-json:" + player_short_json
+      ok=redis.publish(channel_name,player_short_json)
+      logger.info "PUBLISH:" + ok.to_s
+      #redis.quit
+
+
+      redirect_to [@game, @player], notice: 'Player has joined the game.'
     else
       render :new
     end

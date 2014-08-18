@@ -97,11 +97,6 @@ GEM
     guard-bundler (2.0.0)
       bundler (~> 1.0)
       guard (~> 2.2)
-    guard-puma (0.2.4)
-      guard (>= 1.0.1)
-      libnotify
-      puma
-      rb-inotify
     guard-rails (0.5.3)
       guard (~> 2.0)
     guard-rspec (4.3.1)
@@ -128,8 +123,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
-    libnotify (0.8.3)
-      ffi (>= 1.0.11)
     libv8 (3.16.14.3)
     listen (2.7.9)
       celluloid (>= 0.15.2)
@@ -280,7 +273,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   guard-bundler
-  guard-puma
   guard-rails
   guard-rspec
   haml-rails

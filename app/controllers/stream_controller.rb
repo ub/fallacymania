@@ -3,23 +3,30 @@ class StreamController < ApplicationController
   def show
     logger.info params
     logger.info request.url # => http://localhost:3000/games/3/stream
+
+    if ! Rails.application.config.cache_classes
+      render nothing: true
+      return
+    end
+
     response.headers['Content-Type'] = 'text/event-stream'
     sse = SSE.new(response.stream,  event: "player-joined")
 
-    sse.write( {nick: 'Athos', created_at: DateTime.now})
-    sleep 3
-    sse.write( {nick: 'Porthos', created_at: DateTime.now})
-    sleep 3
-    sse.write( {nick: 'Aramis', created_at: DateTime.now}, event: "message")
+    #sse.write( {nick: 'Athos', created_at: DateTime.now})
+    #sleep 3
+    #sse.write( {nick: 'Porthos', created_at: DateTime.now})
+    #sleep 3
+    #sse.write( {nick: 'Aramis', created_at: DateTime.now}, event: "message")
 
     redis = nil
-    #redis = Redis.new
-    #channel_name = "-#{request.url}-"
-    #redis.subscribe(channel_name) do | on |
-    #  on.message do | channel, message |
-    #    sse.write(message)
-    #  end
-    #end
+    redis = Redis.new
+    channel_name = "-#{request.url}-"
+    logger.info "REDIS Channel name:" + channel_name
+    redis.subscribe(channel_name) do | on |
+      on.message do | channel, message |
+        sse.write(message)
+      end
+    end
 
     render nothing: true
   rescue IOError

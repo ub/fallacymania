@@ -31,7 +31,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'guard-puma'
+  #gem 'guard-puma'
   gem 'html2haml'
   gem 'rails_layout'
   gem "intellij-coffee-script-debugger",
@@ -46,3 +46,4 @@ gem 'simple_form', '~> 3.1.0.rc2'
 #gem 'unicorn'
 #gem 'unicorn-rails'
 gem 'puma'
+#gem 'rainbows'
