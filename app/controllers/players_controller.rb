@@ -36,7 +36,7 @@ class PlayersController < ApplicationController
       logger.info "Channel name:" + channel_name + ", player-json:" + player_short_json
       ok=redis.publish(channel_name,player_short_json)
       logger.info "PUBLISH:" + ok.to_s
-      #redis.quit
+      redis.quit
 
 
       redirect_to [@game, @player], notice: 'Player has joined the game.'
