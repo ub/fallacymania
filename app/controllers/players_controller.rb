@@ -2,6 +2,8 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action :set_game
 
+
+
   # GET /players
   def index
     @players = @game.players.all
@@ -47,6 +49,9 @@ class PlayersController < ApplicationController
     @player.destroy
     redirect_to game_players_url(@game), notice: 'Player was successfully destroyed.'
   end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
