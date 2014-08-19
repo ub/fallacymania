@@ -12,6 +12,12 @@ class StreamController < ApplicationController
     response.headers['Content-Type'] = 'text/event-stream'
     sse = SSE.new(response.stream,  event: "player-joined")
 
+    logger.debug response.stream.class.to_s
+
+    response.stream.on_error do
+      logger.error "ERROR-" * 30
+    end
+
     #sse.write( {nick: 'Athos', created_at: DateTime.now})
     #sleep 3
     #sse.write( {nick: 'Porthos', created_at: DateTime.now})
@@ -24,7 +30,11 @@ class StreamController < ApplicationController
     logger.info "REDIS Channel name:" + channel_name
     redis.subscribe(channel_name) do | on |
       on.message do | channel, message |
+        begin
         sse.write(message)
+        rescue
+          logger.error "ERROR sse.write"
+        end
       end
     end
 
