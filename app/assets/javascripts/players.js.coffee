@@ -10,6 +10,12 @@ jQuery ->
       "<tr><td>#{JSON.parse(player_json_string).nick}</td><td>SHOW</td><td>EDIT</td><td>DESTROY</td> </tr>"
 
 
+    window.addEventListener "beforeunload", (e) ->
+      if ( es )
+        console.log "event source about to close ..."
+        es.close()
+        console.log "event source CLOSED"
+
     es.onmessage= (e) ->
       console.log "MESSAGE"
       console.log "data:",  e.data
@@ -21,6 +27,9 @@ jQuery ->
       console.log ">" + e
       for p of e
         console.log "e[#{p}]="+ e[p]
+
+    es.onerror = (e) ->
+      console.error "event source ERROR"
 
     es.addEventListener 'player-joined', (e) ->
       console.log "PLAYER JOINED"
