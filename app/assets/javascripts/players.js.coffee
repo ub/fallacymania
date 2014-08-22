@@ -15,6 +15,15 @@ jQuery ->
         console.log "event source about to close ..."
         es.close()
         console.log "event source CLOSED"
+        delrequest =
+          url: 'stream'
+          type: 'DELETE'
+          async: false
+          error: (jqXHR, textStatus, errorThrown) ->
+            console.error "AJAX ERROR: #{textStatus} #{JSON.stringify(errorThrown)}"
+          success: (data, textStatus, jqXHR) ->
+            console.log "Successful AJAX call: #{data}"
+        $.ajax delrequest
 
     es.onmessage= (e) ->
       console.log "MESSAGE"

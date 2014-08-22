@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  include ChannelNames
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action :set_game
 
@@ -32,7 +33,7 @@ class PlayersController < ApplicationController
       player_short_json=@player.slice(:nick, :created_at).to_json
       redis = Redis.new
       logger.info "URL type:" + game_stream_url(@game).class.to_s
-      channel_name = "-#{game_stream_url(@game)}-"
+      channel_name = redisCN_playerlist_for_game(@game)
       logger.info "Channel name:" + channel_name + ", player-json:" + player_short_json
       ok=redis.publish(channel_name,player_short_json)
       logger.info "PUBLISH:" + ok.to_s
@@ -56,6 +57,7 @@ class PlayersController < ApplicationController
 
   # DELETE /players/1
   def destroy   #Destroy means exit game
+    logger.info "Destroying player #{@player.id}"
     @player.destroy
     redirect_to game_players_url(@game), notice: 'Player was successfully destroyed.'
   end

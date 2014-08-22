@@ -16,3 +16,6 @@
 %br
 
 = link_to 'New Player', new_game_player_path(@game)
+%br
+-#= link_to 'CLOSE STREAM', game_stream_path(@game)  ,method: :delete, :data => { confirm: 'Are you sure?' }, :class => 'btn btn-default'
+

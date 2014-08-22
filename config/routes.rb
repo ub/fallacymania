@@ -19,7 +19,9 @@ Fallacymania::Application.routes.draw do
     member do
       get :play
     end
-    resource :stream, only: :show, controller: :stream
+    resource :stream, only: [:show, :destroy], controller: :stream do
+
+    end
     resources :players
   end
 
