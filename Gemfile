@@ -21,11 +21,14 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'capybara-webkit'
-  gem 'database_cleaner'
+end
 
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development do
