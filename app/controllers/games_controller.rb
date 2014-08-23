@@ -21,6 +21,12 @@ class GamesController < ApplicationController
   end
 
   # GET /games/1/edit
+  # edit is action for games in 'OPEN' state
+  # gamemaster may tune the game options, join or start the game;
+  # other participants may leave the game or just passively wait
+  #
+  # Future versions: players may participate in opening game chat (ONLINE)
+  # game master may terminate the game at will
   def edit
   end
 

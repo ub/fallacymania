@@ -1,4 +1,21 @@
-- model_class = Game
 .page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+  %h1
+    Game
+    %small
+      %em= @game.description
+  %p
+    created by
+    %strong= display_game_master(@game)
+    &nbsp;at
+    %em= display_game_creation_time(@game)
+= render :partial => "game_settings" if i_am_the_game_master(@game)
+%h3 Players list
+%ul.list-group#current-players
+  %li.list-group-item
+    %h4.list-group-item-heading  d'Artagnan
+    %p.list-group-item-text
+      joined at
+      %em 00:00
+
+%hr
+= render :partial => 'game_actions' if i_am_the_game_master(@game)
