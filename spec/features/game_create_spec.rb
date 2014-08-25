@@ -11,6 +11,8 @@ feature 'Game creation' do
     Warden.test_reset!
   end
 
+  let(:user) { FactoryGirl.create(:user) }
+
   # Scenario: User initiates creation of a new game
   #   Given I am singed in
   #   When I visit marquee page
@@ -18,7 +20,6 @@ feature 'Game creation' do
   #   I see new_game form to fill and submit
 
   scenario 'User initiates creation of a new game' do
-    user = FactoryGirl.create(:user)
     login_as(user)
     visit marquee_path
     click_on 'Create new game'
@@ -36,7 +37,6 @@ feature 'Game creation' do
   #   And game with me as game master will become available
 
   scenario 'User initiates creation of a new game' do
-    user = FactoryGirl.create(:user)
     login_as(user)
     visit marquee_path
     click_on 'Create new game'
