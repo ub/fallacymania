@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :game do
-    description "MyString"
+    description "Test Game"
     status "OPEN"
     game_master nil
   end
