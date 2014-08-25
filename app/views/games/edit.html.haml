@@ -1,21 +1,6 @@
-.page-header
-  %h1
-    Game
-    %small
-      %em= @game.description
-  %p
-    created by
-    %strong= display_game_master(@game)
-    &nbsp;at
-    %em= display_game_creation_time(@game)
-= render :partial => "game_settings" if i_am_the_game_master(@game)
-%h3 Players list
-%ul.list-group#current-players
-  %li.list-group-item
-    %h4.list-group-item-heading  d'Artagnan
-    %p.list-group-item-text
-      joined at
-      %em 00:00
+= render :partial => 'game_header'
+= render :partial => "game_settings"
+= render :partial => 'players_list'
 
 %hr
-= render :partial => 'game_actions' if i_am_the_game_master(@game)
+= render :partial => 'game_actions' 
