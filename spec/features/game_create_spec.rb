@@ -44,7 +44,7 @@ feature 'Game creation' do
     click_on 'Create Game'
     game=Game.find_by_description('Test-game')
     expect(game.game_master).to eq(user)
-    expect(current_url).to eq( edit_game_url(game)) #FIXME: this fails!
+    expect(current_url).to eq( edit_game_url(game)) 
   end
 
 
