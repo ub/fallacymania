@@ -35,11 +35,13 @@ class StreamController < ApplicationController
 
     redis.subscribe(players_data_channel, browser_channel) do | on |
       on.message do | channel, message |
+        logger.info "SUBSCRIPTION EVENT RECEIVED"
         case channel
         when players_data_channel
           begin
             logger.info "MESSAGE:" + message
             sse.write(message)
+            logger.info "message written"
           rescue
             logger.error "ERROR sse.write"
             redis.unsubscribe

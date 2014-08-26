@@ -4,6 +4,11 @@
 jQuery ->
   if $(".players.index").length > 0
     console.log "HELLO, players index"
+    if( typeof(EventSource) != "undefined" )
+      console.log    " Yes! Server-sent events support!"
+    else
+      console.log    "Sorry! No server-sent events support"
+
     es = new EventSource('stream')
     console.log "Url:" + es.url #=> Url:http://localhost:3000/games/3/stream
     format_player = (player_json_string) ->
