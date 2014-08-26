@@ -37,7 +37,8 @@ feature "Players joining the game" do
     #visit current_path #FIXME: refresh
     expect(current_path).to eq game_players_path(game)
 
-
+    # see fork solution which may be useful:
+    # http://www.coderexception.com/CzbH6mHmUUPWSJSU/multithreaded-concurrent-capybara-requests
 
     #$stderr.puts 'console log:'
     #$stderr.puts '============'
