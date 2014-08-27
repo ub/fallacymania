@@ -13,6 +13,7 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
+    @players = @game.players
   end
 
   # GET /games/new
@@ -28,6 +29,7 @@ class GamesController < ApplicationController
   # Future versions: players may participate in opening game chat (ONLINE)
   # game master may terminate the game at will
   def edit
+    @players = @game.players
   end
 
   # POST /games
