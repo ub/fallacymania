@@ -61,7 +61,7 @@ RSpec.describe PlayersController, :type => :controller do
     context "when user is signed in" do
 
       it "assigns a new player as @player" do
-        pending "TODO: implement sign-in for the context" #TODO 
+        pending "TODO: implement sign-in for the context" #TODO
 
         get :new, {game_id: game.id} #, valid_session
         expect(assigns(:player)).to be_a_new(Player)

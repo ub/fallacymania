@@ -2,7 +2,7 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 # Feature: Game creation
-#    As a []signed-in] user
+#    As a [signed-in] user
 #    I want to create a new game
 #    Becoming the game master of it
 feature 'Game creation' do
@@ -36,7 +36,7 @@ feature 'Game creation' do
   #   Finally, I will see edit_game page (as a master)
   #   And game with me as game master will become available
 
-  scenario 'User initiates creation of a new game' do
+  scenario 'User creates a new game' do
     login_as(user)
     visit marquee_path
     click_on 'Create new game'

@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   include ChannelNames
+  include GamesHelper
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action :set_game
 
@@ -38,8 +39,11 @@ class PlayersController < ApplicationController
       logger.info "PUBLISH:" + ok.to_s
       redis.quit
 
-
-      redirect_to [@game, @player], notice: 'Player has joined the game.'
+      if i_am_the_game_master(@game)
+        redirect_to edit_game_path(@game), notice: 'You have joined the game.'
+      else
+        redirect_to game_path(@game), notice: 'You have joined the game.'
+      end
     else
       render :new
     end
