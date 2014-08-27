@@ -2,6 +2,7 @@ class StreamController < ApplicationController
   include ActionController::Live
   include ChannelNames
   def show
+    logger.info "STREAM BEGINS"
     logger.info params
     logger.info request.url # => http://localhost:3000/games/3/stream
 
@@ -9,6 +10,7 @@ class StreamController < ApplicationController
       render nothing: true
       return
     end
+    logger.info "STREAM GOES ON"
 
     response.headers['Content-Type'] = 'text/event-stream'
     sse = SSE.new(response.stream,  event: "player-joined", retry: 400)

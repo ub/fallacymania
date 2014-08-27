@@ -1,5 +1,5 @@
 %h3 Players list
-%ul.list-group#current-players
+%ul.list-group#current-players{:'data-stream-path' => game_stream_path(@game)}
   - @players.each do |player|
     %li.list-group-item
       %h4.list-group-item-heading=  player.nick
