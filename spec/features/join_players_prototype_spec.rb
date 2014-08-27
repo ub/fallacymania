@@ -12,7 +12,7 @@ feature "Players joining the game" do
   let(:clare) { FactoryGirl.create(:clare) }
   let(:game)  { FactoryGirl.create(:game, game_master: user)}
 
-  scenario "Game creator watches players joining Test Game", js: true do
+  scenario "Game creator watches players joining Test Game", js: true, skip: true do
     login_as(user)
     visit game_players_path(game)
 
