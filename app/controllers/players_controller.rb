@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   def show
   end
 
-  # GET /players/new
+  # GET /game/1/players/new
   def new
     @player = @game.players.build(user: current_user)
     @player.nick = current_user.name #TODO make sure the nick is unique

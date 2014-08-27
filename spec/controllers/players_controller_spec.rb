@@ -31,10 +31,15 @@ RSpec.describe PlayersController, :type => :controller do
     skip("Add a hash of attributes invalid for your model")
   }
 
+  let(:user)  { FactoryGirl.create(:user) }
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PlayersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {current_user: user} }
+
+
+  let(:game)  { FactoryGirl.create(:game, game_master: user)}
 
   describe "GET index" do
     it "assigns all players as @players" do
@@ -53,9 +58,14 @@ RSpec.describe PlayersController, :type => :controller do
   end
 
   describe "GET new" do
-    it "assigns a new player as @player" do
-      get :new, {}, valid_session
-      expect(assigns(:player)).to be_a_new(Player)
+    context "when user is signed in" do
+
+      it "assigns a new player as @player" do
+        pending "TODO: implement sign-in for the context" #TODO 
+
+        get :new, {game_id: game.id} #, valid_session
+        expect(assigns(:player)).to be_a_new(Player)
+      end
     end
   end
 
