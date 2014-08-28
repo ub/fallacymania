@@ -42,7 +42,8 @@ class StreamController < ApplicationController
         when players_data_channel
           begin
             logger.info "MESSAGE:" + message
-            sse.write(message)
+            event, msg = message[0] == '-' ? ["player-left", message[1..-1]] : ["player-joined", message]
+            sse.write(msg,event: event)
             logger.info "message written"
           rescue
             logger.error "ERROR sse.write"

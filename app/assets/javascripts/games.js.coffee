@@ -3,8 +3,20 @@ jQuery ->
     stream_url = $('#current-players').data('stream-path')
     es = new EventSource(stream_url)
     es.addEventListener 'player-joined', (e) ->
-      console.log "data:",  e.data
+      console.log "player joined data:",  e.data
       $('#current-players').append format_player(e.data)
+
+    es.addEventListener 'player-left', (e) ->
+      console.log "player left data:",  e.data
+      player=JSON.parse(e.data)
+      console.log ("hm")
+      candidates = $('#current-players li.list-group-item').has("h4:contains('#{player.nick}')")
+      console.log "Found #{candidates.length} candidate(s)"
+      exact = candidates.filter ->
+        console.log "this is #{@}"
+        $(@).find("h4").text() == player.nick
+      console.log "Found #{candidates.length} candidate(s) and #{exact.length} exact match(es)"
+      exact.remove()
 
     format_player = (player_json_string) ->
       player=JSON.parse(player_json_string)

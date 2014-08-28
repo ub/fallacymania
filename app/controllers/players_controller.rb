@@ -58,10 +58,26 @@ class PlayersController < ApplicationController
     end
   end
 
+=begin
+    We have very simple Redis protocol:
+     - publish json-string when player is created (joins the game)
+    - publish json-string preceded by minus (-) when player is destroyed (leaves the game)
+=end
+
   # DELETE /players/1
   def destroy   #Destroy means exit game
-    logger.info "Destroying player #{@player.id}"
-    @player.destroy
+  logger.info "Destroying player #{@player.id}"
+    player_short_json = @player.slice(:nick, :created_at).to_json
+    if @player.destroy
+      redis = Redis.new
+      logger.info "[delete]URL type:" + game_stream_url(@game).class.to_s
+      channel_name = redisCN_playerlist_for_game(@game)
+      logger.info "[delete]Channel name:" + channel_name + ", player-json:" + player_short_json
+      ok=redis.publish(channel_name,"-#{player_short_json}")
+      logger.info "[delete]PUBLISH:" + ok.to_s
+      redis.quit
+    end
+
     if i_am_the_game_master(@game)
       redirect_to edit_game_path(@game), notice: 'You are not playing your game anymore'
     else
