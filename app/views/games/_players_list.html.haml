@@ -6,3 +6,6 @@
       %p.list-group-item-text
         joined at
         %em= l player.created_at, format: :long
+        - if myself?(player)
+          = link_to 'Leave the game', [@game, player], method: :delete,
+          data: { :confirm => 'Do you really want to leave the game?' }, class:'btn btn-danger btn-xs'

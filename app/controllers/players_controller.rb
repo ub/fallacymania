@@ -62,7 +62,11 @@ class PlayersController < ApplicationController
   def destroy   #Destroy means exit game
     logger.info "Destroying player #{@player.id}"
     @player.destroy
-    redirect_to game_players_url(@game), notice: 'Player was successfully destroyed.'
+    if i_am_the_game_master(@game)
+      redirect_to edit_game_path(@game), notice: 'You are not playing your game anymore'
+    else
+      redirect_to marquee_path
+    end
   end
 
 

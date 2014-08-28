@@ -12,6 +12,10 @@ module GamesHelper
     game.game_master == current_user
   end
 
+  def myself?(player)
+    player.user == current_user
+  end
+
   def display_game_creation_time( game )
     game.created_at.to_formatted_s(:time)
   end
