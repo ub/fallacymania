@@ -15,7 +15,7 @@ feature 'Game joining' do
   let!(:game)  { FactoryGirl.create(:game, game_master: user)}
 
 
-  context "As a game master" do
+  context 'As the game master' do
     before do
       login_as(user)
       visit edit_game_path(game)
@@ -27,7 +27,7 @@ feature 'Game joining' do
     #   And there exists an OPEN game created by me
     #   When I visit edit_game page
     #   I see 'Join' button
-    scenario "User looks at the game" do
+    scenario 'User looks at the game' do
       expect(page).to have_link "Join"
     end
 
@@ -43,7 +43,7 @@ feature 'Game joining' do
     #  When I fill nick field
     #  And click the 'Create Player' button
     #  Then i should return to edit_game_page
-    scenario "User joins the game " do
+    scenario 'User joins the game' do
       click_on "Join"
       expect(current_url).to eq new_game_player_url(game)
       fill_in "Nick", with: "the game master"
@@ -52,7 +52,7 @@ feature 'Game joining' do
     end
   end
 
-  context "As an ordinary user" do
+  context 'As an ordinary user' do
     before do
       login_as(alice)
       visit marquee_path
@@ -70,7 +70,7 @@ feature 'Game joining' do
     #  When I fill nick field
     #  And click the 'Create Player' button
     #  Then i should be redirected to show game page
-    scenario "User joins the game" do
+    scenario 'User joins the game' do
       click_on "Join"
       expect(current_url).to eq new_game_player_url(game)
       fill_in "Nick", with: "liddell"
@@ -78,4 +78,11 @@ feature 'Game joining' do
       expect(current_url).to eq game_url(game)
     end
   end
+
+  scenario 'User is not allowed to join more than one game' #TODO
+  scenario 'Game master is not allowed to games other than his own' #TODO
+
+  scenario 'User nick should be unique' #TODO
+
+
 end

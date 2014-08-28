@@ -47,5 +47,7 @@ feature 'Game creation' do
     expect(current_url).to eq( edit_game_url(game))
   end
 
+  scenario 'User is not allowed to create second game when he owns a game that is not CLOSEd' #TODO (?)
+
 
 end
