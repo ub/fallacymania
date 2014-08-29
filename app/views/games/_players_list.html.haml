@@ -1,0 +1,11 @@
+%h3 Players list
+%ul.list-group#current-players{:'data-stream-path' => game_stream_path(@game)}
+  - @players.each do |player|
+    %li.list-group-item
+      %h4.list-group-item-heading=  player.nick
+      %p.list-group-item-text
+        joined at
+        %em= l player.created_at, format: :long
+        - if myself?(player)
+          = link_to 'Leave the game', [@game, player], method: :delete,
+          data: { :confirm => 'Do you really want to leave the game?' }, class:'btn btn-danger btn-xs'

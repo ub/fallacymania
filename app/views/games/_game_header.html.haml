@@ -1,0 +1,10 @@
+.page-header
+  %h1
+    Game
+    %small
+      %em= @game.description
+  %p
+    created by
+    %strong= display_game_master(@game)
+    &nbsp;at
+    %em= display_game_creation_time(@game)

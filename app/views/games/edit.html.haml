@@ -1,4 +1,8 @@
 - model_class = Game
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+
+= render :partial => 'game_header'
+= render :partial => "game_settings"
+= render :partial => 'players_list'
+
+%hr
+= render :partial => 'game_actions'

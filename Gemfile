@@ -11,6 +11,7 @@ gem 'redcarpet'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'redis'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
@@ -37,6 +38,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  #gem 'guard-puma'
   gem 'html2haml'
   gem 'rails_layout'
   gem "intellij-coffee-script-debugger",
@@ -48,5 +50,9 @@ group :development do
 end
 gem 'mysql2'
 gem 'simple_form', '~> 3.1.0.rc2'
-gem 'unicorn'
-gem 'unicorn-rails'
+#gem 'unicorn'
+#gem 'unicorn-rails'
+gem 'puma'
+#gem 'thin'
+#gem 'rainbows'
+#gem 'rainbows-rails'

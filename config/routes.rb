@@ -1,6 +1,8 @@
 Fallacymania::Application.routes.draw do
 
 
+  get 'stream/show'
+
   get 'marquee/show'
 
   get 'omniauth_callback/google_oauth2'
@@ -16,6 +18,9 @@ Fallacymania::Application.routes.draw do
   resources :games do
     member do
       get :play
+    end
+    resource :stream, only: [:show, :destroy], controller: :stream do
+
     end
     resources :players
   end
