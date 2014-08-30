@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :play, :update, :destroy]
+  include ChannelNames
+
+  before_action :set_game, only: [:show, :edit, :play, :update, :start, :destroy]
+
 
   # GET /games
   def index
@@ -8,7 +11,7 @@ class GamesController < ApplicationController
 
   # GET /games/1/play
   def play
-    redirect_to edit_game_path(@game)
+    redirect_to edit_game_path(@game) #TODO: wrong. depends on user roled and game status
   end
 
   # GET /games/1
@@ -52,6 +55,27 @@ class GamesController < ApplicationController
       render :edit
     end
   end
+
+  # PATCH/PUT /games/1/start
+  def start
+    if @game.update(status: 'PLAYING')
+      logger.info "[start] game update success" #FIXME: refactor (see players_controller) (use concern?)
+      redis = Redis.new
+      channel_name = redisCN_playerlist_for_game(@game)
+      logger.info "[start]Channel name:" + channel_name
+      ok=redis.publish(channel_name,">{}")
+      logger.info "[start]PUBLISH:" + ok.to_s
+      redis.quit
+
+      redirect_to @game, notice: 'Game was successfully started.' #TODO 1st round
+    else
+      logger.info "[start] game update failure"
+      redirect_to :back #TODO: does it work ?!
+    end
+
+  end
+
+
 
   # DELETE /games/1
   def destroy

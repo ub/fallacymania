@@ -42,9 +42,17 @@ class StreamController < ApplicationController
         when players_data_channel
           begin
             logger.info "MESSAGE:" + message
-            event, msg = message[0] == '-' ? ["player-left", message[1..-1]] : ["player-joined", message]
+            event, msg, done = case message[0]
+              when '-'
+                ["player-left", message[1..-1]]
+              when '>'
+                ["game-started", message[1..-1], true]
+              else
+                ["player-joined", message] #FIXME: refactor (see PlayersController#destroy)
+            end
             sse.write(msg,event: event)
             logger.info "message written"
+            redis.unsubscribe if done
           rescue
             logger.error "ERROR sse.write"
             redis.unsubscribe

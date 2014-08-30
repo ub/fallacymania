@@ -18,6 +18,7 @@ Fallacymania::Application.routes.draw do
   resources :games do
     member do
       get :play
+      patch :start
     end
     resource :stream, only: [:show, :destroy], controller: :stream do
 

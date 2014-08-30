@@ -12,6 +12,13 @@ jQuery ->
         $(@).find("h4").text() == player.nick
       exact.remove()
 
+    es.addEventListener 'game-started', (e) ->
+      console.log "GAME START EVENT"
+      window.removeEventListener "beforeunload"
+      terminate_sse()
+      #TODO: window.location.replace(target_url)
+
+
     format_player = (player_json_string) ->
       player=JSON.parse(player_json_string)
       date = new Date(player.created_at)
@@ -24,15 +31,19 @@ jQuery ->
       </li>
       """
 
+    #ask server to check sse connection
+    terminate_sse ->
+      es.close()
+      delrequest =
+        url: stream_url
+        type: 'DELETE'
+        async: false
+        error: (jqXHR, textStatus, errorThrown) ->
+          console.error "AJAX ERROR: #{textStatus} #{JSON.stringify(errorThrown)}"
+        success: (data, textStatus, jqXHR) ->
+          console.log "Successful AJAX call: #{data}"
+      $.ajax delrequest
+
     window.addEventListener "beforeunload", (e) ->
       if ( es )
-        es.close()
-        delrequest =
-          url: stream_url
-          type: 'DELETE'
-          async: false
-          error: (jqXHR, textStatus, errorThrown) ->
-            console.error "AJAX ERROR: #{textStatus} #{JSON.stringify(errorThrown)}"
-          success: (data, textStatus, jqXHR) ->
-            console.log "Successful AJAX call: #{data}"
-        $.ajax delrequest
+        terminate_sse()
