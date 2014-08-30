@@ -49,7 +49,7 @@ class RoundsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
-      @round = Round.where(game_id: params[:game_id], ordinal: params[:id]).first
+      @round = Round.find_by(game_id: params[:game_id], ordinal: params[:id])
       logger.info "well so..."
     end
 
