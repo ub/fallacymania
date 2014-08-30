@@ -62,7 +62,7 @@ class PlayersController < ApplicationController
     We have very simple Redis protocol:
     - publish json-string when player is created (joins the game)
     - publish json-string preceded by minus (-) when player is destroyed (leaves the game)
-    - redirect to next page in workflow when the first is gt sign
+    - redirect to next page in workflow when the first char is gt (>) sign
 =end
 
   # DELETE /players/1

@@ -1,6 +1,7 @@
 Fallacymania::Application.routes.draw do
 
 
+
   get 'stream/show'
 
   get 'marquee/show'
@@ -24,6 +25,7 @@ Fallacymania::Application.routes.draw do
 
     end
     resources :players
+    resources :rounds
   end
 
   get "countdown/:time" , to: 'countdown#show', as: :countdown

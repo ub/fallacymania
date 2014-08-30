@@ -17,6 +17,7 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @players = @game.players
+    @continue_url=game_round_path(@game,1)
   end
 
   # GET /games/new
@@ -58,21 +59,23 @@ class GamesController < ApplicationController
 
   # PATCH/PUT /games/1/start
   def start
-    if @game.update(status: 'PLAYING')
-      logger.info "[start] game update success" #FIXME: refactor (see players_controller) (use concern?)
-      redis = Redis.new
-      channel_name = redisCN_playerlist_for_game(@game)
-      logger.info "[start]Channel name:" + channel_name
-      ok=redis.publish(channel_name,">{}")
-      logger.info "[start]PUBLISH:" + ok.to_s
-      redis.quit
+    @game.update!(status: 'PLAYING')
+    round = @game.rounds.create!
+    logger.info "[start] game update success" #FIXME: refactor (see players_controller) (use concern?)
+    redis = Redis.new
+    channel_name = redisCN_playerlist_for_game(@game)
+    logger.info "[start]Channel name:" + channel_name
+    ok=redis.publish(channel_name,">{}") #TODO: game_round_path(@game,1)
+    logger.info "[start]PUBLISH:" + ok.to_s
+    redis.quit
 
-      redirect_to @game, notice: 'Game was successfully started.' #TODO 1st round
-    else
-      logger.info "[start] game update failure"
-      redirect_to :back #TODO: does it work ?!
-    end
+    # assert ordinal should be 1
 
+    redirect_to_path = game_round_path(@game, round.ordinal)
+    redirect_to redirect_to_path, notice: 'Game was successfully started.'
+  rescue ActiveRecord::RecordInvalid => invalid
+      logger.info "[start] game update  or round create failure #{invalid}"
+      redirect_to :back #TODO: redirect to error
   end
 
 

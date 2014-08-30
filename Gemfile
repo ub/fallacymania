@@ -12,6 +12,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'redis'
+gem 'workflow'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'

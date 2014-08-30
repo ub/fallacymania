@@ -14,9 +14,10 @@ jQuery ->
 
     es.addEventListener 'game-started', (e) ->
       console.log "GAME START EVENT"
-      window.removeEventListener "beforeunload"
+      window.removeEventListener "beforeunload", beforeunload_listener
       terminate_sse()
-      #TODO: window.location.replace(target_url)
+
+      window.location.replace($('body').data('continue-url'))
 
 
     format_player = (player_json_string) ->
@@ -44,6 +45,7 @@ jQuery ->
           console.log "Successful AJAX call: #{data}"
       $.ajax delrequest
 
-    window.addEventListener "beforeunload", (e) ->
+    window.addEventListener "beforeunload", beforeunload_listener
+    beforeunload_listener = (e) ->
       if ( es )
         terminate_sse()
