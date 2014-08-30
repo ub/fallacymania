@@ -32,7 +32,7 @@ jQuery ->
       """
 
     #ask server to check sse connection
-    terminate_sse ->
+    terminate_sse = ->
       es.close()
       delrequest =
         url: stream_url
