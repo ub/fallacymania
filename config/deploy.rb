@@ -3,10 +3,11 @@ lock '3.2.1'
 set :application, 'fallacymania'
 #set :repo_url, "/home/baranov/work/RoRprojects/#{fetch(:application)}"
 
+
 case fetch(:stage) #TODO: lazy eval in
-  when "production"
+  when :production
     load File.expand_path('../secrets_deploy.rb', __FILE__)
-  when "staging"
+  when :staging
     load File.expand_path('../secrets2_deploy.rb', __FILE__)
 end
 
@@ -14,6 +15,11 @@ end
 
 set :log_level, :info
 set :default_env, { database_url:  "mysql2://deploy:#{fetch(:dbpassword)}@localhost/#{fetch(:application)}_#{fetch(:stage)}" }
+
+set :deploy_via,      :remote_cache
+
+
+set :puma_init_active_record, true
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -34,7 +40,7 @@ set :default_env, { database_url:  "mysql2://deploy:#{fetch(:dbpassword)}@localh
  set :pty, true
 
 # Default value for :linked_files is []
- set :linked_files, %w{config/database.yml config/secrets.yml}
+ set :linked_files, %w{config/database.yml config/secrets.yml config/.env.staging config/.env.production}
 
 # Default value for linked_dirs is []
  set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
