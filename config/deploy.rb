@@ -2,9 +2,14 @@ lock '3.2.1'
 
 set :application, 'fallacymania'
 #set :repo_url, "/home/baranov/work/RoRprojects/#{fetch(:application)}"
-set :repo_url, "/home/deploy/repos/#{fetch(:application)}.git"
 
-load File.expand_path('../secrets_deploy.rb', __FILE__)
+case fetch(:stage) #TODO: lazy eval in
+  when "production"
+    load File.expand_path('../secrets_deploy.rb', __FILE__)
+  when "staging"
+    load File.expand_path('../secrets2_deploy.rb', __FILE__)
+end
+
 
 
 set :log_level, :info
@@ -15,7 +20,6 @@ set :default_env, { database_url:  "mysql2://deploy:#{fetch(:dbpassword)}@localh
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/home/deploy/fallacymania'
- set :deploy_to, "/home/deploy/public_html/#{fetch(:application)}"
 
 # Default value for :scm is :git
  set :scm, :git
@@ -41,19 +45,19 @@ set :default_env, { database_url:  "mysql2://deploy:#{fetch(:dbpassword)}@localh
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :example do
-  desc "Just tesing env var"
-  task :example do
+#namespace :example do
+#  desc "Just tesing env var"
+#  task :example do
+#
+#  on roles(:app), in: :sequence, wait: 5 do
+#    with data: :foo do
+#    puts capture("env ")
+#      end
+#  end
+#    end
+#end
 
-  on roles(:app), in: :sequence, wait: 5 do
-    with data: :foo do
-    puts capture("env ")
-      end
-  end
-    end
-end
-
-namespace :deploy do
+namespace :deploy do #TODO: passenger only. remove!
 
   desc 'Restart application'
   task :restart do
@@ -64,7 +68,4 @@ namespace :deploy do
   end
 
   after :publishing, :restart
-
-
-
 end

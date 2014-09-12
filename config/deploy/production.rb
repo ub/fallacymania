@@ -17,6 +17,9 @@
 
 server 'fm.urbylog.info', user: 'deploy', roles: %w{web app db}
 set :ssh_options, user: 'deploy', forward_agent: true
+set :repo_url, "/home/deploy/repos/#{fetch(:application)}.git"
+
+set :deploy_to, "/home/deploy/public_html/#{fetch(:application)}"
 
 set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || "master"
 

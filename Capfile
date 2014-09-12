@@ -6,6 +6,7 @@ require 'capistrano/deploy'
 
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/puma'
  #require "whenever/capistrano"  #cron tab on deployment server
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
