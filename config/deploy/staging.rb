@@ -19,7 +19,7 @@ server 'a2m.urbylog.info', user: 'deploy', roles: %w{web app db}
 set :ssh_options, user: 'deploy', forward_agent: true
 
 
-set :repo_url, "/home/deploy/repos/#{fetch(:application)}.git" #TODO: github!
+set :repo_url, "git@github.com:ub/fallacymania.git"
 
 
 set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || "master-s"
