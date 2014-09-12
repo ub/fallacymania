@@ -92,7 +92,7 @@ Development
 -   Testing Framework: RSpec and Factory Girl
 -   Front-end Framework: Bootstrap 3.0 (Sass)
 -   Form Builder: SimpleForm
--   Authentication: None
+-   Authentication: Devise
 -   Authorization: None
 -   Admin: None
 
@@ -106,7 +106,7 @@ Email delivery is disabled in development.
 Getting Started
 ---------------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sorry.
 
 Documentation and Support
 -------------------------
@@ -115,12 +115,12 @@ This is the only documentation.
 
 #### Issues
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Too many to be listed here :).
 
 Similar Projects
 ----------------
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+No that I am aware of.
 
 Contributing
 ------------
