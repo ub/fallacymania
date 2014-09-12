@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'a2m.urbylog.info', user: 'deploy', roles: %w{web app db}
+server 'a2m.urbylog.info', user: 'deploy', roles: %w{web app db puma_nginx}
 set :ssh_options, user: 'deploy', forward_agent: true
 
 

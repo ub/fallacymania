@@ -49,7 +49,8 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'capistrano3-puma',   require: false
+  #gem 'capistrano3-puma',   require: false
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'capistrano-rails'
 end
 gem 'mysql2'
