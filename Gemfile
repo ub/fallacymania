@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
+
+gem 'dotenv-deployment'
+
 gem 'rails', '4.1.1'
 gem 'haml-rails'
 gem 'jquery-rails'
@@ -14,9 +17,6 @@ gem 'omniauth-google-oauth2'
 gem 'redis'
 gem 'workflow'
 
-gem 'dotenv'
-gem 'dotenv-deployment'
-gem 'dotenv-rails'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
