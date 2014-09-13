@@ -14,6 +14,7 @@ gem 'omniauth-google-oauth2'
 gem 'redis'
 gem 'workflow'
 
+gem 'dotenv'
 gem 'dotenv-deployment'
 
 group :assets do
