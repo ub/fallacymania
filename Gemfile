@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'dotenv-deployment'
-gem 'dotenv-rails'
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
 
 gem 'rails', '4.1.1'
 gem 'haml-rails'
