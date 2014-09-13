@@ -34,7 +34,7 @@ set :puma_init_active_record, true
  set :pty, true
 
 # Default value for :linked_files is []
- set :linked_files, %w{config/database.yml config/secrets.yml config/.env.staging config/.env.production}
+ set :linked_files, %w{config/database.yml config/secrets.yml .env.staging .env.production}
 
 # Default value for linked_dirs is []
  set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
