@@ -16,6 +16,7 @@ gem 'workflow'
 
 gem 'dotenv'
 gem 'dotenv-deployment'
+gem 'dotenv-rails'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
