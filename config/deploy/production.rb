@@ -23,6 +23,7 @@ set :deploy_to, "/home/deploy/public_html/#{fetch(:application)}"
 
 set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || "master"
 
+
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a

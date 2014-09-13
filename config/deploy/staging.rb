@@ -24,8 +24,6 @@ set :repo_url, "git@github.com:ub/fallacymania.git"
 
 set :branch, ENV['REVISION'] || ENV['BRANCH_NAME'] || "master-s"
 
-
-
 server 'a2m.urbylog.info', user: 'deploy', roles: %w{web app db}
 set :deploy_to, "/var/www/fallacymania.net"
 
