@@ -15,6 +15,11 @@ set :deploy_via,      :remote_cache
 
 set :puma_init_active_record, true
 
+set :puma_conf, -> { "#{shared_path}/config/puma.rb" }
+
+
+
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -34,7 +39,7 @@ set :puma_init_active_record, true
  set :pty, true
 
 # Default value for :linked_files is []
- set :linked_files, %w{config/database.yml config/secrets.yml .env.staging .env.production}
+ set :linked_files, %w{config/database.yml config/secrets.yml config/puma.rb .env.staging .env.production}
 
 # Default value for linked_dirs is []
  set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
